@@ -1,0 +1,25 @@
+services:
+  web:
+    image: nginx:alpine
+    container_name: static-web
+    volumes:
+      - ./public:/usr/share/nginx/html:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "80:80"
+
+  discopanel:
+    image: nickheyer/discopanel:latest
+    container_name: discopanel
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/user/discopanel/data:/app/data
+      - /home/user/discopanel/backups:/app/backups
+      - /home/user/discopanel/tmp:/app/tmp
+      - ./config.yaml:/app/config.yaml:ro
+    environment:
+      DISCOPANEL_DATA_DIR: /app/data
+      DISCOPANEL_HOST_DATA_PATH: /home/user/discopanel/data
+      TZ: UTC

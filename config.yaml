@@ -1,0 +1,3 @@
+storage:
+  data_dir: "/app/data/servers"
+  backup_dir: "/app/backups"
