@@ -7,11 +7,19 @@ BACKUPS_DIR=$(BASE_DIR)/backups
 TMP_DIR=$(BASE_DIR)/tmp
 SERVERS_DIR=$(DATA_DIR)/servers
 
-.PHONY: up down restart logs ps pull setup-dirs fix-perms
+TAILSCALE_FLAG=/tmp/tailscale_installed
+
+.PHONY: up down restart logs ps pull setup-dirs fix-perms \
+        tailscale-check tailscale-up env
 
 ## Start all services
-up: tailscale-check setup-dirs
+up: tailscale-check tailscale-up setup-dirs env
 	$(COMPOSE) up -d
+
+## Create or update .env with PORT and Tailscale IP
+env:
+	@echo "Generating .env file..."
+	@./scripts/create_env.sh
 
 ## Create required directories if they don't exist
 setup-dirs:
@@ -34,6 +42,10 @@ tailscale-check:
 		echo "✅ Tailscale installed successfully"; \
 	fi
 
+## Ensure Tailscale is up and authenticated
+tailscale-up:
+	@tailscale status >/dev/null 2>&1 || tailscale up
+
 ## Stop all services
 down:
 	$(COMPOSE) down
@@ -45,12 +57,3 @@ restart:
 ## Follow service logs
 logs:
 	$(COMPOSE) logs -f $(SERVICE)
-
-## Show container status
-ps:
-	$(COMPOSE) ps
-
-## Pull latest image and restart
-pull:
-	$(COMPOSE) pull
-	$(COMPOSE) up -d
