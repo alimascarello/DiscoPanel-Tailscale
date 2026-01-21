@@ -338,3 +338,67 @@ h1 {
 .hidden {
     display: none;
 }
+
+.side-modpack {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    padding: 16px 12px;
+    border-radius: 20px 0 0 20px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: -4px 0 20px rgba(37, 99, 235, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 100;
+    overflow: hidden;
+    animation: side-pulse 2s infinite;
+}
+
+.side-modpack svg {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.side-modpack::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 50%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+}
+
+.side-modpack:hover {
+    padding-right: 25px;
+    box-shadow: -6px 0 30px rgba(37, 99, 235, 0.8);
+    filter: brightness(1.2);
+}
+
+.side-modpack:hover::before {
+    left: 150%;
+}
+
+@keyframes side-pulse {
+    0% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.05); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+@media (max-width: 600px) {
+    .side-modpack span { display: none; }
+    .side-modpack { padding: 12px 8px; }
+}

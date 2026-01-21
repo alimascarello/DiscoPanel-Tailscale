@@ -18,8 +18,9 @@ up: tailscale-check tailscale-up setup-dirs env
 
 ## Create or update .env with PORT and Tailscale IP
 env:
-	@echo "Generating .env file..."
-	@./scripts/create_env.sh
+	@echo "Enter the modpack link (CurseForge or Modrinth):"
+	@read LINK; \
+	./scripts/create_env.sh $$LINK
 
 ## Create required directories if they don't exist
 setup-dirs:
