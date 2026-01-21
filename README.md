@@ -39,7 +39,7 @@ A simple tool to quickly start and stop Minecraft servers for playing with frien
 
 ```bash
 git clone https://github.com/alimascarello/DiscoPanel-Tailscale.git
-cd discopanel-launcher
+cd DiscoPanel-Tailscale
 ```
 
 2. Ensure all dependencies are installed:
@@ -96,4 +96,9 @@ This project uses third-party software:
 
 This project is **not affiliated** with DiscoPanel or Tailscale.
 
-This project is licensed under the GNU Affero General Public License v3 (AGPLv3). See [LICENSE](./LICENSE) for details.
+## Source Access
+
+The source code for this project is publicly available on GitHub:  
+[https://github.com/alimascarello/DiscoPanel-Tailscale](https://github.com/alimascarello/DiscoPanel-Tailscale)
+
+Anyone running this project on a server or interacting with it remotely can access the source code via this repository, in accordance with the GNU AGPLv3 requirements.
