@@ -10,11 +10,11 @@ SERVERS_DIR=$(DATA_DIR)/servers
 TAILSCALE_FLAG=/tmp/tailscale_installed
 
 .PHONY: up down restart logs ps pull setup-dirs fix-perms \
-        tailscale-check tailscale-up env
+        tailscale-check tailscale-up config
 
-env:
+config:
 	@echo "Updating environment configuration..."
-	@./scripts/create_env.sh
+	@./scripts/create_config.sh
 
 setup-dirs:
 	@echo "Ensuring required directories exist..."
@@ -38,7 +38,7 @@ tailscale-check:
 tailscale-up:
 	@tailscale status >/dev/null 2>&1 || tailscale up
 
-up: tailscale-check tailscale-up setup-dirs env
+up: tailscale-check tailscale-up setup-dirs config
 	$(COMPOSE) up -d
 
 down:
