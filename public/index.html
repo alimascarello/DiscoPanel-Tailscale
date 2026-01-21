@@ -12,13 +12,13 @@
     <div class="background-shape shape-1"></div>
     <div class="background-shape shape-2"></div>
 
-    <div class="lang-container">
-        <svg class="lang-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="language-container">
+        <svg class="language-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129">
             </path>
         </svg>
-        <select id="languageSelect" class="lang-select">
+        <select id="languageSelect" class="language-select">
             <option value="en" selected>English</option>
             <option value="es">Español</option>
             <option value="pt">Português</option>
@@ -40,8 +40,8 @@
         <div class="input-group">
             <label for="ipField" data-i18n="ipLabel">IP Address</label>
             <div class="ip-wrapper">
-                <input type="text" id="ipField" class="ip-input" value="192.168.1.10" readonly>
-                <button id="copyBtn" class="copy-btn" title="Copy">
+                <input type="text" id="ipField" class="ip-input" value="localhost:25565" readonly>
+                <button id="copyBtn" class="copy-button" title="Copy">
                     <svg class="icon-copy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
@@ -52,13 +52,18 @@
             </div>
         </div>
 
-        <div class="divider"></div>
-
         <div class="status-section">
             <span data-i18n="statusLabel" class="status-label">Status</span>
             <div class="status-badge-wrapper">
                 <span id="statusIcon" class="status-dot"></span>
                 <span id="statusText" class="status-text" data-i18n="offline">Offline</span>
+            </div>
+        </div>
+
+        <div id="playerSection" class="status-section" style="display: none; margin-top: 10px;">
+            <span data-i18n="playersLabel" class="status-label">Players</span>
+            <div class="status-badge-wrapper">
+                <span id="playerCount" class="status-text" style="font-weight: 600;">0/0</span>
             </div>
         </div>
 
@@ -95,14 +100,14 @@
         </div>
     </main>
 
-    <script type="module" src="app.js"></script>
-
-    <a href="URL_DO_MODPACK" target="_blank" class="side-modpack">
+    <a href="" target="_blank" class="side-modpack">
         <div class="glow-effect"></div>
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
         </svg>
         <span>Modpack</span>
     </a>
+
+    <script type="module" src="app.js"></script>
 </body>
 </html>
